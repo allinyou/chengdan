@@ -14,7 +14,8 @@ for(var i=0;i<items.length;i++){
 //选项卡效果
 for(var i=0;i<items.length;i++){
     items[i].index=i;
-    items[i].onclick=function (){
+    items[i].onclick=function (e){
+        e.stopPropagation();//阻止事件流，防止事件向子元素扩散
         for(var v=0;v<flag.length;v++){
             if(v!=this.index){
                 flag[v]=false;
@@ -28,8 +29,7 @@ for(var i=0;i<items.length;i++){
                 imgs.style.transform="rotate(90deg)";
             }
             for(var j=0;j<lis.length;j++){
-                lis[j].onclick=function (e){
-                    e.stopPropagation();
+                lis[j].onclick=function (){
                     for(var k=0;k<lis.length;k++){
                         bg2(lis[k]);
                     }
